@@ -1,0 +1,80 @@
+package com.example.carta_precentacion
+
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+
+class MainActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent {
+            BusinessCard()
+        }
+    }
+}
+
+@Composable
+fun BusinessCard() {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color(0xFFDCEEC4)), // Color de fondo
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        Image(
+            painter = painterResource(id = R.drawable.androidlogo), //logo
+            contentDescription = "Android Logo",
+            modifier = Modifier.size(100.dp)
+        )
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        Text(
+            text = "Jose Rafael",
+            fontSize = 24.sp,
+            fontWeight = FontWeight.Bold
+        )
+
+        Text(
+            text = "Android Developer Extraordinaire",
+            fontSize = 16.sp,
+            fontWeight = FontWeight.Bold,
+            color = Color(0xFF3E8B3E)
+        )
+
+        Spacer(modifier = Modifier.height(32.dp))
+
+        ContactInfo()
+    }
+}
+
+@Composable
+fun ContactInfo() {
+    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        ContactItem("📞 4951367178")
+        ContactItem("📱 Jose RAFAEL")
+        ContactItem("✉️ 22150082@aguascalientes.tecnm.mx")
+    }
+}
+
+@Composable
+fun ContactItem(text: String) {
+    Text(
+        text = text,
+        fontSize = 14.sp
+    )
+}
